@@ -10,13 +10,12 @@ function updatePhoneNumber(isIncrease) {
   } else {
     newPhoneNumber = previousPhoneNumber - 1;
   }
-
   phoneNumberField.value = newPhoneNumber;
 
   return newPhoneNumber;
 }
 
-function updatePhoneNumber(newPhoneNumber) {
+function updatePhoneTotalPrice(newPhoneNumber) {
   const phoneTotalPrice = newPhoneNumber * 1219;
   const phoneTotalElement = document.getElementById("phone-total");
   phoneTotalElement.innerText = phoneTotalPrice;
@@ -27,13 +26,15 @@ document
   .addEventListener("click", function () {
     const newPhoneNumber = updatePhoneNumber(true);
 
-    updatePhoneNumber(newPhoneNumber);
+    updatePhoneTotalPrice(newPhoneNumber);
+    calculateSubTotal();
   });
 
 document
-  .getElementById("btn-phone-miuns")
+  .getElementById("btn-phone-minus")
   .addEventListener("click", function () {
     const newPhoneNumber = updatePhoneNumber(false);
 
-    updatePhoneNumber(newPhoneNumber);
+    updatePhoneTotalPrice(newPhoneNumber);
+    calculateSubTotal();
   });
